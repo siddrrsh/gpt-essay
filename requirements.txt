@@ -1,0 +1,3 @@
+pdf2image==1.16.2
+pytesseract==0.3.10
+functions==0.7.0
