@@ -95,6 +95,7 @@ if pdf_file:
             totalPages = "Pages: "+str(nbPages)+" in total"
             txt = text_data
         st.info(totalPages)
+    print(txt)
 
 
     st.markdown('''
