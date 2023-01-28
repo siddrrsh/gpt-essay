@@ -1,12 +1,19 @@
 import streamlit as st
 import pandas as pd
 from io import StringIO
+import pdfplumber
 
-uploaded_file = st.file_uploader("Choose a file", 'pdf')
-fdata = StringIO("")
+
+def extract_data(feed):
+    data = []
+    with pdfplumber.load(feed) as pdf:
+        pages = pdf.pages
+        for p in pages:
+            data.append(p.extract_tables())
+            st.write(p.extract_tables())
+    st.write(data)
+    return None # build more code to return a dataframe 
+
+uploaded_file = st.file_uploader('Choose your .pdf file', type="pdf")
 if uploaded_file is not None:
-    # To convert to a string based IO:
-    stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-    st.write(stringio)
-    fdata = stringio
-st.write(fdata)
+    df = extract_data(uploaded_file)
