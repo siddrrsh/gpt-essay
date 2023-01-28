@@ -1,7 +1,10 @@
 import pdfplumber
 import streamlit as st
+import streamlit as st
+import pandas as pd
+from io import StringIO
 
-st.write()
+st.write("GPT Essay")
 
 def extract_data(feed):
     data = []
